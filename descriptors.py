@@ -59,9 +59,9 @@ print("________________\n"*5)
 
 
 x = np.concatenate([peptide["property_pos_convx_angular"] for peptide in peptides], axis=0)
-print("MinMax Scaling...")
+#print("MinMax Scaling...")
 #x = minmax_scaler_3d(x, feature_range=(-1,1))
-print("Standard Scaling...")
+print("Robust Scaling...")
 x = robust_scaler_3d(x, with_scaling=True, with_centering=True)
 np.save("inputs/peptides_array_7_property_pos_convx_angular", x, allow_pickle=False)
 

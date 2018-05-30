@@ -18,6 +18,7 @@ from sklearn.model_selection import StratifiedKFold
 from aa_indeces import aai_to_get
 
 from tensorflow.python.client import device_lib
+import pickle
 
 print(device_lib.list_local_devices())
 
@@ -38,9 +39,15 @@ cvsscores = []
 scaler = MinMaxScaler(feature_range=(0,1))
 scaler.fit(X_ann)
 X_ann = scaler.transform(X_ann)
+
+pickle.dump(scaler, open("scaler.p", "wb"))
+
 print(X_ann.shape)
 pca = PCA(n_components=0.98, svd_solver="full")
-X_ann = pca.fit_transform(X_ann)
+
+pca.fit(X_ann)
+pickle.dump(pca, open("pca.p", "wb"))
+X_ann = pca.transform(X_ann)
 print(X_ann.shape)
 #######
 
@@ -88,7 +95,7 @@ model_ann.summary()
 
 print("Model fitting...")
 
-fBestModel = 'best_model_prod.h5' 
+fBestModel = 'best_model_prod2.h5' 
 
 early_stop = EarlyStopping(monitor='val_loss', patience=100, verbose=1) 
 best_model = ModelCheckpoint(fBestModel, verbose=0, save_best_only=True)
@@ -102,7 +109,7 @@ model_ann.fit(x = X_ann,
                   X_ann, 
                   Y,
                   ), 
-          epochs=1000, batch_size=202, verbose=True,
+          epochs=500, batch_size=202, verbose=True,
           #shuffle=True, 
           callbacks=[
                   best_model, 
