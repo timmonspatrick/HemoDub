@@ -2,6 +2,8 @@
 *.pyc
 *.h5
 *.txt
+*.npy
+
 ##Directories
 /HEMOLYTIK/
 /DBAASP/
