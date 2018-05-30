@@ -127,3 +127,20 @@ j_s = {"Peptides" : all_peptides}
 with open("peptides.json","w") as f:
 	f.write(json.dumps(j_s))
     
+non_hemolytic_peptides = []
+hemolytic_peptides = []
+for peptide in all_peptides:
+    if peptide["activity"] == "YES":
+        hemolytic_peptides.append(peptide)
+    elif peptide["activity"] == "NO":
+        non_hemolytic_peptides.append(peptide)
+
+with open("non_hemolytic_peptides.fasta", "w") as f:
+    for peptide in non_hemolytic_peptides:
+        f.write(">" + peptide["id"]+"\n")
+        f.write(peptide["seq"]+"\n")
+with open("hemolytic_peptides.fasta", "w") as f:
+    for peptide in hemolytic_peptides:
+        f.write(">" + peptide["id"]+"\n")
+        f.write(peptide["seq"]+"\n")
+                

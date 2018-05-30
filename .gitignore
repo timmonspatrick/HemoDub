@@ -1,0 +1,12 @@
+##FileTypes
+*.pyc
+*.h5
+*.txt
+##Directories
+/HEMOLYTIK/
+/DBAASP/
+/DRAMP/
+/archive/
+/__pycache__/
+/.git/
+/tb_logs*

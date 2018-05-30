@@ -6,9 +6,12 @@ Created on Thu Dec 14 15:02:19 2017
 """
 from __future__ import print_function
 import numpy as np
+from residue_distribution import alphabets
+
 conjoint_letters = ["A", "I", "Y", "H", "R", "D", "C"]
 aa_letters = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
 di_letters = ["%s%s" % (a, b) for a in aa_letters for b in aa_letters]
+di_conjoint_letters = ["%s%s" % (a, b) for a in conjoint_letters for b in conjoint_letters]
 di3_letters = ["%s%s%s" % (a, b, c) for a in conjoint_letters for b in conjoint_letters for c in conjoint_letters]
 
 def counter(string_list):
@@ -45,14 +48,15 @@ def counter3(string):
         d = {k : d[k]/(l) for k in d}
         return d
         
-def residue_distribution2(all_residues):
+def residue_distribution2(all_residues, alphabet):
     '''
     Takes as arguments a string with letters, and the type of sequence represented.
     Returns an alphabetically ordered string of relative frequencies, correct to three decimal places. 
     '''
     d = counter(all_residues)
-    di2_counts = list(sorted([(i, d[i]) for i in di_letters ]))                              ##Removes ambiguous letters
+    di2_counts = list(sorted([(i, d[i]) for i in alphabet ]))                              ##Removes ambiguous letters
     r_c = [i[1] for i in di2_counts]
+    print(r_c)
     dis = np.array([r_c,])
     return dis
 
@@ -64,10 +68,11 @@ def residue_distribution3(all_residues):
     d = counter3(all_residues)
     di3_counts = list(sorted([(i, d[i]) for i in di3_letters ]))                              ##Removes ambiguous letters
     r_c = [i[1] for i in di3_counts]
+
     dis = np.array([r_c,])
     return dis
 
-def di2(seq):
+def di2(seq, alphabet="aa"):
     '''
     A function to return all the di2s for a sequence.
     Eg. ABCDEF --> AD, BE, CF
@@ -80,7 +85,7 @@ def di2(seq):
         except IndexError:
             pass
     
-    return residue_distribution2(l)
+    return residue_distribution2(l, alphabets[alphabet][2])
 
 def di3(seq):
     '''
@@ -97,4 +102,5 @@ def di3(seq):
     
     return residue_distribution3(l)
     
+
     

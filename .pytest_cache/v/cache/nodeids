@@ -1,0 +1,9 @@
+[
+  "test_D_descriptors.py::test_D_descriptor",
+  "test_aff.py::test_aaf",
+  "test_di2.py::test_di2",
+  "test_di2.py::test_di3",
+  "test_hemopotent.py::test_hemopotent",
+  "test_residue_distribution.py::test_counter",
+  "test_residue_distribution.py::test_residue_distribution"
+]

@@ -1,0 +1,11 @@
+{
+  "modules/PyBioMed/test/test_PyBioMed.py": true,
+  "modules/PyBioMed/test/test_PyDNA.py": true,
+  "modules/PyBioMed/test/test_PyGetMol.py": true,
+  "modules/PyBioMed/test/test_PyInteration.py": true,
+  "modules/PyBioMed/test/test_PyMolecule.py": true,
+  "modules/PyBioMed/test/test_PyPretreat.py": true,
+  "modules/PyBioMed/test/test_PyProtein.py": true,
+  "test_residue_distribution.py::test_counter": true,
+  "test_residue_distribution.py::test_residue_distribution": true
+}
