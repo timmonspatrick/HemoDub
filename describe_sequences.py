@@ -5,9 +5,7 @@ Created on Wed May 30 20:56:29 2018
 @author: Patrick
 """
 
-from __future__ import print_function
-from IPython import get_ipython
-get_ipython().magic('reset -sf') 
+from __future__ import print_function 
 import json
 from modules.modlamp.descriptors import PeptideDescriptor, GlobalDescriptor
 import numpy as np

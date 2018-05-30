@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-
-from IPython import get_ipython
-
-get_ipython().magic('reset -sf') 
-
 from describe_sequences import describe_sequence
 import pickle as pickle
 import json
