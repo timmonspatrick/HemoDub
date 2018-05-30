@@ -56,7 +56,6 @@ def residue_distribution2(all_residues, alphabet):
     d = counter(all_residues)
     di2_counts = list(sorted([(i, d[i]) for i in alphabet ]))                              ##Removes ambiguous letters
     r_c = [i[1] for i in di2_counts]
-    print(r_c)
     dis = np.array([r_c,])
     return dis
 

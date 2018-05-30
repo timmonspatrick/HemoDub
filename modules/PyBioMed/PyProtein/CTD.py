@@ -41,7 +41,8 @@ Email: gadsby@163.com
 #####################################################################################
 '''
 
-import string, math, copy
+import math, copy
+from ... import newstring as string
 
 AALetter = ["A", "R", "N", "D", "C", "E", "Q", "G", "H", "I", "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 

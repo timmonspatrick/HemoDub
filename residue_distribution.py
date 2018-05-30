@@ -44,6 +44,7 @@ def counter(sequence, seq_type, f_length):
             d[s] += 1.0
         except KeyError:
             d[s] = 1.0
+    
     return d
 
 def residue_distribution(sequence, seq_type, f_length, typ, constraint=None, constraint_val = None):
@@ -59,14 +60,14 @@ def residue_distribution(sequence, seq_type, f_length, typ, constraint=None, con
     
     if typ == "distribution":
         residue_counts = [(i[0], i[1] / ( len(sequence) - f_length + 1) ) for i in residue_counts]
-        print(residue_counts)
-        assert 0.99 <= sum((i[1] for i in residue_counts)) <= 1.01
+
     elif typ == "boolean":
         residue_counts = [(i[0], 1 if i[1] > 0 else 0) for i in residue_counts]
     elif typ == "absolute":
         residue_counts = residue_counts
     
     r_c = [i[1] for i in residue_counts]
-    print(r_c)
     dis = np.array([r_c,])
     return dis
+
+counter("AGAGAG", "aa",2)

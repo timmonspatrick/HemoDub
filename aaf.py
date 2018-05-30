@@ -25,8 +25,7 @@ def aaf(sequence, identifier, mode):
         return total
     elif mode == "max":
         return max(total_list)
-    
-print(aaf("GHACEF", "KLEP840101", "max"))
+
 
 def aaf_angular(sequence, identifier, mode):
     x = aaindex.get(identifier)
