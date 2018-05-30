@@ -29,9 +29,13 @@ from modules.pydpi.pypro import PyPro
 import pickle
 random.seed(31) ## Set a random seed for reproducible results
 
-dp = pickle.load( open( "dp.p", "rb"))
-tp = pickle.load( open( "tp.p", "rb"))
-
+try:
+    dp = pickle.load( open( "dp.p", "rb"))
+    tp = pickle.load( open( "tp.p", "rb"))
+except:
+    dp = pickle.load( open('/home/timmonspatrick/TravelTheEarth/TravelTheEarth/HemoDub/engine/HemoDub/dp.p', "rb"))
+    tp = pickle.load( open('/home/timmonspatrick/TravelTheEarth/TravelTheEarth/HemoDub/engine/HemoDub/tp.p', "rb"))
+    
 def describe_sequence(peptide):
     #print(peptide["seq"])
      ###Calculate all the Global descriptors##################################
