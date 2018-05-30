@@ -16,7 +16,7 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler
 from sklearn.decomposition import PCA
 from sklearn.model_selection import StratifiedKFold
 from aa_indeces import aai_to_get
-
+import pickle
 from tensorflow.python.client import device_lib
 
 print(device_lib.list_local_devices())
@@ -38,10 +38,19 @@ cvsscores = []
 scaler = MinMaxScaler(feature_range=(0,1))
 scaler.fit(X_ann)
 X_ann = scaler.transform(X_ann)
+
+pickle.dump(scaler, open("scaler.p", "wb"))
+
 print(X_ann.shape)
 pca = PCA(n_components=0.98, svd_solver="full")
-X_ann = pca.fit_transform(X_ann)
+
+pca.fit(X_ann)
+pickle.dump(pca, open("pca.p", "wb"))
+X_ann = pca.transform(X_ann)
+
 print(X_ann.shape)
+
+print("DUMPED")
 #######
 
 dims = X_ann.shape[1]
