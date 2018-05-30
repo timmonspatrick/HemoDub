@@ -1,6 +1,5 @@
 ##FileTypes
 *.pyc
-*.h5
 *.txt
 *.npy
 

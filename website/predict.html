@@ -51,14 +51,16 @@
       <div class="row">
         <div class="col-xs-12">
           <h1 class="text-center">Paste your sequences in FASTA format below</h1>
-          <form target="http://www.travelthe.earth/hemodub">
+          <form action="http://www.travelthe.earth/hemodub" method="post">
+          
+          
           <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
           <textarea type="textarea" class="data input-lg" id="data" name="data" style="width:100%;"></textarea>
           <button type="submit" class="btn btn-lg btn-default">Submit</button>
           </form>
           
           {% if result %}
- 		  <h1 class="text-center">Paste your sequences in FASTA format below</h1>
+ 		  <h1 class="text-center">Results:</h1>
  		  {{result}}
 		  {% endif %}
           <p>&nbsp;</p>
