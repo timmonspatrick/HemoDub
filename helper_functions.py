@@ -3,6 +3,7 @@
 A set of helper functions imported by descriptors.py
 """
 import numpy as np
+from functools import lru_cache
 aa_letters = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
 di_letters = ["%s%s" % (a, b) for a in aa_letters for b in aa_letters]
 tri_letters = ["%s%s%s" % (a, b, c) for a in aa_letters for b in aa_letters for c in aa_letters]
@@ -12,6 +13,7 @@ veltri_letters_di = ["%s%s" % (a, b) for a in veltri_letters for b in veltri_let
 letters = {1 : aa_letters, 2 : di_letters, 3 : tri_letters, 4 : conjoint_letters}
 from reduced_alphabets import conjoint_dict, TD_3, TD_5, TD_10, veltri
 
+@lru_cache(maxsize=10)
 def alpha2num_dict_f(alphabet=aa_letters):
     return {(["X"] + alphabet)[i] : i for i in range(0,len(alphabet)+1)}
 
@@ -53,6 +55,7 @@ def feature_occurence(peptides):
     
     return dp, tp
 
+@lru_cache(maxsize=30)
 def conjoint_seq(seq, alphabet = conjoint_dict):
     '''A function to return the conjoint sequence of a peptide sequence.
     This reduces the 20 amino acids to an alphabet of 7 amino acids'''

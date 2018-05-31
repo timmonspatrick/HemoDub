@@ -5,6 +5,7 @@ Created on Thu Mar 01 19:39:53 2018
 @author: Patrick
 """
 import numpy as np
+from functools import lru_cache
 
 aa_letters_1 = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
 aa_letters_2 = ["%s%s" % (a, b) for a in aa_letters_1 for b in aa_letters_1]
@@ -34,6 +35,7 @@ alphabets = {"aa" : {1 : aa_letters_1, 2 : aa_letters_2, 3 : aa_letters_3},
              "veltri" : {1 : veltri_letters_1, 2 : veltri_letters_2, 3 : veltri_letters_3}
              }
 
+@lru_cache(maxsize=30)
 def counter(sequence, seq_type, f_length):
     l = len(sequence)
     d = {i : 0 for i in alphabets[seq_type][f_length]}
@@ -69,5 +71,3 @@ def residue_distribution(sequence, seq_type, f_length, typ, constraint=None, con
     r_c = [i[1] for i in residue_counts]
     dis = np.array([r_c,])
     return dis
-
-counter("AGAGAG", "aa",2)
